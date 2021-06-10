@@ -116,7 +116,11 @@ Admin = false
 scrollText("-------------------------------------------------" .. "\n")
 while true do
 --Create a > for a terminal indicator
-scrollText("> ")
+if Admin == false then
+    scrollText("> ")
+else
+    scrollText("$ ")
+end
 --Read commands that are typed in. Make sure all commands are accepted no matter capitalization
 io.input(io.stdin)
 local read1 = io.read()
@@ -181,8 +185,12 @@ else
         scrollText("NewUser: Creates a new user" .. "\n")
         scrollText("DelUser: Deletes an existing user" .. "\n")
     elseif read == "exit" then
-        scrollText("Goodbye!" .. "\n")
-        os.exit()
+        if Admin == true then
+            Admin = false
+        else
+            scrollText("Goodbye!" .. "\n")
+            os.exit()
+        end
     elseif read == "logout" then
         LoggedIn = false
         User = nil
