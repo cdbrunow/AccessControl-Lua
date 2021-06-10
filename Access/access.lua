@@ -6,7 +6,7 @@
 --this code and it fails please increase
 --this counter as a warning for the next person
 
---totalHoursWastedHere = 17
+--totalHoursWastedHere = 18
 
 --Copyright 2021 - 2022 cdbrunow
 --Access control program WIP
@@ -78,7 +78,7 @@ local function checkpass(pass)
     end
 end
 --Add a version number
-version = "0.1.0-alpha.3"
+version = "0.1.0-alpha.4"
 --Load SHA Dependency
 sha = require("sha2")
 --Some Fancy text
@@ -178,6 +178,8 @@ else
         scrollText("Help:   This menu" .. "\n")
         scrollText("Exit: Exits the Program" .. "\n")
         scrollText("Logout: Logs you out" .. "\n")
+        scrollText("NewUser: Creates a new user" .. "\n")
+        scrollText("DelUser: Deletes an existing user" .. "\n")
     elseif read == "exit" then
         scrollText("Goodbye!" .. "\n")
         os.exit()
@@ -241,6 +243,31 @@ else
             end
         end
     
+    
+    elseif read == "deluser" then
+        if Admin == true then
+            scrollText("User?" .. "\n")
+            scrollText("Input: ")
+            local input = io.read()
+            local username = input
+            if IsDir("Users/" .. username) == true then
+                scrollText("User Exsists: Confirm Delete?" .. "\n")
+                scrolltext("Input: ")
+                local input = io.read()
+                local read = string.lower(input)
+                if read == "y" or read == "yes" then
+                   os.execute("cd Users & rmdir /s /q " .. username .. "& cd ..")
+                    scrollText("User: " .. username .. " Deleted!" .. "\n")
+                else
+                    scrollText("Aborting!" .. "\n")
+                end
+            else
+                scrollText("User does not exist. Aborting!" .. "\n")
+            end
+        else    
+            scrollText("You are not an admin!")
+        end
+
     else
         scrollText("Unknown Command!" .. "\n")
 end
