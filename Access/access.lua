@@ -78,7 +78,7 @@ local function checkpass(pass)
     end
 end
 --Add a version number
-version = "0.1.0-alpha"
+version = "0.1.0-alpha.3"
 --Load SHA Dependency
 sha = require("sha2")
 --Some Fancy text
@@ -224,16 +224,13 @@ else
         loop = true
         while loop == true do
             sleep(1)
-            print(io.read())
             local read = io.read("*l")
             if read == User then
-                print(io.read())
                 Admin = true
                 scrollText("Privilege Elevated!" .. "\n")
                 loop = false
                 file:close()
             elseif read == nil then
-                print(io.read())
                 if Admin == false then
                     scrollText("You are not an admin!" .. "\n")
                     loop = false
