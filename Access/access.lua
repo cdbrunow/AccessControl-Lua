@@ -252,7 +252,7 @@ else
             local username = input
             if IsDir("Users/" .. username) == true then
                 scrollText("User Exsists: Confirm Delete?" .. "\n")
-                scrolltext("Input: ")
+                scrollText("Input: ")
                 local input = io.read()
                 local read = string.lower(input)
                 if read == "y" or read == "yes" then
