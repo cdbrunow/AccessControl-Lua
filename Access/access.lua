@@ -1,13 +1,3 @@
---Dear Programmer
---When I wrote this code only god and
---I knew how it worked.
---Now, Only god knows it!
---Therefore, if you are trying to optimize / fix
---this code and it fails please increase
---this counter as a warning for the next person
-
---totalHoursWastedHere = 18
-
 --Copyright 2021 - 2022 cdbrunow
 --Access control program WIP
 --Dear god send help, lord knows I need it
@@ -78,7 +68,7 @@ local function checkpass(pass)
     end
 end
 --Add a version number
-version = "0.1.0-alpha.4"
+version = "0.1.0-alpha.5"
 --Load SHA Dependency
 sha = require("sha2")
 --Some Fancy text
@@ -226,7 +216,7 @@ else
             input= nil
             username = nil
         else
-            scrollText("Error: No Privilege")
+            scrollText("Error: No Privilege" .. "\n")
         end
     elseif read == "su" then
         file = io.open("admins.txt", "r")
@@ -273,7 +263,7 @@ else
                 scrollText("User does not exist. Aborting!" .. "\n")
             end
         else    
-            scrollText("You are not an admin!")
+            scrollText("Error: No Privilege" .. "\n")
         end
 
     else
